@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Tytuł strony / Page Title</title>
+  </head>
+  <body>
+    <!-- navbar -->
+    <div class="w3-bar w3-indigo w3-hide-small">
+      <a href="#" class="w3-bar-item w3-button">Uczelnia</a>
+      <a href="#" class="w3-bar-item w3-button w3-text-grey">Kandydaci</a>
+      <div class="w3-dropdown-hover">
+        <button class="w3-button">
+          Studenci <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+          <a href="#" class="w3-bar-item w3-button">Stacjonarne</a>
+          <a href="#" class="w3-bar-item w3-button">Niestacjonarne</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="w3-bar w3-indigo w3-hide-medium w3-hide-large">
+      <!-- hamburger menu -->
+      <a
+        href="#"
+        id="ham"
+        class="w3-bar-item w3-button"
+        onclick="document.getElementById('mySidebar').style.display='block' ;
+        document.getElementById('x').style.display='block';
+        this.style.display='none';"
+        ><i class="fa fa-bars"></i
+      ></a>
+      <!-- close button -->
+      <a
+        href="#"
+        id="x"
+        style="display: none"
+        class="w3-bar-item w3-button"
+        onclick="document.getElementById('ham').style.display='block' ;
+        document.getElementById('mySidebar').style.display='none';
+        this.style.display='none';"
+        >X</a
+      >
+    </div>
+
+    <!-- sidebar -->
+    <div
+      class="w3-sidebar w3-bar-block w3-indigo w3-hide-medium w3-hide-large"
+      style="display: none"
+      id="mySidebar"
+    >
+      <a href="#" class="w3-bar-item w3-button">Uczelnia</a>
+      <a href="#" class="w3-bar-item w3-button w3-text-grey">Kandydaci</a>
+      <div class="w3-dropdown-hover">
+        <button class="w3-button">
+          Studenci <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4">
+          <a href="#" class="w3-bar-item w3-button">Stacjonarne</a>
+          <a href="#" class="w3-bar-item w3-button">Niestacjonarne</a>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="w3-margin-left w3-margin-right header">Wydział IET</div>
+      <div class="w3-row">
+        <div class="w3-col s6 m4">
+          <div
+            class="w3-margin-left w3-margin-right w3-padding w3-indigo animation card"
+            style="z-index: 1"
+          >
+            <div class="name w3-margin-bottom">Jan Kowalski</div>
+            <div class="faculty">Informatyka</div>
+            <img src="https://res.cloudinary.com/dxyklix4g/image/upload/v1648076469/833552_kgk0cq.png" alt="" style="width: 100%" />
+            <div class="position">Aktualne stanowisko: Asystent</div>
+          </div>
+        </div>
+        <div class="w3-col s6 m4">
+          <div
+            class="w3-margin-left w3-margin-right w3-padding w3-indigo card"
+            style="z-index: 2"
+          >
+            <div class="name w3-margin-bottom">Anna Nowak</div>
+            <div class="faculty">Elektronika</div>
+            <img src="https://res.cloudinary.com/dxyklix4g/image/upload/v1648076475/FemaleAvatar5_iq4sna.png" alt="" style="width: 100%" />
+            <div class="position">Aktualne stanowisko: Adiunkt</div>
+          </div>
+        </div>
+        <div class="w3-col s6 m4">
+          <div
+            class="w3-margin-left w3-margin-right w3-padding w3-indigo animation"
+            style="z-index: 3"
+          >
+            <div class="name w3-margin-bottom">Jerzy Zając</div>
+            <div class="faculty">Telekomunikacja</div>
+            <img src="https://res.cloudinary.com/dxyklix4g/image/upload/v1648076469/833552_kgk0cq.png" alt="" style="width: 100%" />
+            <div class="position">Aktualne stanowisko: Wykładowca</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w3-bar w3-indigo">Imie i Nazwisko</div>
+  </body>
+</html>

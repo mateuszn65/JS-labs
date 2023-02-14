@@ -1,0 +1,51 @@
+*{
+    box-sizing: border-box;
+    
+}
+html{
+    overflow: hidden;
+}
+.header{
+    font-size: 3.5vw;
+}
+.position{
+    height:14vw;
+}
+.faculty{
+    font-size: 1.5em;
+}
+
+@media screen and (max-width:450px){
+    .position{
+        height:20vw;
+    }
+}
+@media screen and (min-width:600px){
+    .container{
+        margin: 0 5vw;
+        font-size: 1vw;
+    }
+    .position{
+        height:5vw;
+    }
+    .name, .position{
+        font-size: 1.6em;
+    }
+    .faculty{
+        font-size: 2.5em;
+    }
+}
+
+.animation{
+    animation: myAnimation 30s ease-in-out infinite;
+
+}
+
+@keyframes myAnimation
+{
+    25% {transform: skewY(30deg) translate(50px, 50px);}
+    30% {transform: scale(2) rotateY(90deg) rotateZ(90deg);}
+    35% {transform: translate(-50px, 100px) skewY(-30deg);}
+    55% {transform: scale(2) rotateY(90deg) rotateZ(90deg);}
+    70% {transform: skewY(30deg);}
+}

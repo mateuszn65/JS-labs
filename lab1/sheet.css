@@ -1,0 +1,81 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.azure{
+    background-color: #eff;
+    border: 1px solid black;
+    box-shadow: 0 0 5px 2px #A8A8A8;
+    margin: 15px;
+    padding: 0.5em;
+}
+
+aside {
+    width: 51%;
+    position: absolute;
+    right: 0;
+    top: 76px;
+}
+footer {
+    font-size: 1.2em;
+    padding: 40px;
+}
+header{
+    position: relative;
+}
+main {
+    width: 39%;
+}
+nav {
+    width: max-content;
+}
+ul {
+    font-size: 1.2em;
+    padding: 15px 0 15px 45px;
+}
+
+h1{
+    font-size: 2.3em;
+}
+
+blockquote{
+    white-space: pre-line;
+}
+
+.animation{
+    animation: color_change 5s ease-in-out infinite alternate;
+
+}
+@keyframes color_change
+{
+    from {color:red;}
+    to {color: blue;}
+}
+
+@media screen and (max-width:800px) {
+    aside{
+        position: relative;
+        top: auto;
+    }
+    .azure{
+        width: auto;
+    }
+}
+
+@media screen and (min-width:450px) and (max-width:800px){
+    blockquote{
+        font-size: 3.8vw;
+    }
+}
+@media screen and (min-width:1000px) and (max-width:1400px){
+    blockquote{
+        font-size: 1.5vw;
+    }
+}
+@media screen and (min-width:1400px){
+    blockquote{
+        font-size: 22px;
+    }
+}
