@@ -1,0 +1,68 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+html, body{
+    height: 100%;
+}
+
+table{
+    width: 100%;
+    height: 95vh;
+    border-collapse: collapse;
+}
+td{
+    border: 1px solid black;
+    text-align: center;
+}
+tr, td{
+    width: 33%;
+    height: 33%;
+}
+
+.info{
+    font-size: 1.5em;
+    height: 5vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+.info *{
+    display: inline;
+}
+
+img{
+    -webkit-user-drag: none;
+    user-select: none;
+    
+}
+
+
+/* Portrait */
+@media screen and (orientation:portrait) {
+    /* img{
+        display: block;
+    } */
+    .one{
+        height: calc(min(90vh / 3, 90vw / 3));
+    }
+    .two{
+        height: calc(min(90vh / 3 / 2, 90vw / 3));
+        
+    }
+    .three{
+        height: calc(min(90vh / 3 / 3, 90vw / 3));
+    }
+    
+}
+@media screen and (orientation:landscape) {
+    .one{
+        width: calc(min(90vw / 3, 90vh / 3));
+    }
+    .two{
+        width: calc(min(90vw / 3 / 2, 90vh / 3));
+    }
+    .three{
+        width: calc(min(90vw / 3 / 3, 90vh / 3));
+    }
+}
