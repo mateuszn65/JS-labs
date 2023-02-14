@@ -1,0 +1,17 @@
+extends base
+block content 
+    div.text-center.d-flex.justify-content-center(style="width:100%")
+        form.d-flex.flex-column.justify-content-center(method="POST" action="/addGuest" style="width:fit-content")
+            #error 
+                if error 
+                    p.text-danger #{errorMsg}
+
+            label(for="firstName") First Name
+            input.mb-3(type="text" name="firstName" id="firstName")
+            label(for="lastName") Last Name
+            input.mb-3(type="text" name="lastName" id="lastName")
+            label(for="email") Email
+            input.mb-3(type="email" name="email" id="email")
+            label(for="roomNumber") Room number
+            input.mb-3(type="number" name="roomNumber" id="roomNumber")
+            button.m-1.btn.btn-dark(type="submit") Add guest

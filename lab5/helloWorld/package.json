@@ -1,0 +1,32 @@
+{
+  "name": "helloworld",
+  "version": "1.0.0",
+  "description": "The \"Hello World\" application",
+  "main": "index.js",
+  "scripts": {
+    "preapp1": "echo 'Uruchamiam aplikacje nr 1'",
+    "app1": "node app1",
+    "preapp2": "echo 'Uruchamiam aplikacje nr 2'",
+    "app2": "node app2",
+    "app3": "node app3",
+    "app4": "node app4",
+    "app5": "node app5",
+    "test": "npx mocha"
+  },
+  "author": "Mateusz Nowak",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.1",
+    "mongodb": "^4.5.0",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.4",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-json": "^1.0.0",
+    "supertest": "^6.2.3"
+  }
+}

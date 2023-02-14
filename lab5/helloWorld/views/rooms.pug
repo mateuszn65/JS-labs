@@ -1,0 +1,32 @@
+extends base
+block content 
+    table.table.table-striped.text-center
+        tr 
+            th.text-center(colspan="4") Available rooms
+        tr 
+            th Room number 
+            th Free places   
+            th Taken places
+            th Details 
+        
+        each room in availableRooms
+            tr 
+                td= room.roomNumber 
+                td= room.capacity
+                td= room.maxCapacity - room.capacity
+                td 
+                    a(href="rooms/" + room.roomNumber) details  
+    br
+    br
+    table.table.table-striped.text-center
+        tr 
+            th.text-center(colspan="2") Not available rooms
+        tr 
+            th Room number 
+            th Details 
+        
+        each room in notAvailableRooms
+            tr 
+                td= room.roomNumber 
+                td 
+                    a(href="rooms/" + room.roomNumber) details  

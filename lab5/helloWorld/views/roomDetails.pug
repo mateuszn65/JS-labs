@@ -1,0 +1,14 @@
+extends base
+block content 
+    table.table.table-striped.text-center
+        tr 
+            th.text-center(colspan="4") Guests in room number #{roomNumber} 
+        tr 
+            th First Name 
+            th Last Name    
+        
+        each guest in guests
+            tr 
+                td= guest.firstName  
+                td= guest.lastName
+

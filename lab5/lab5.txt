@@ -1,0 +1,19 @@
+adres /addRoom 
+formularz dodający  nowy pokoj do bazy danych
+nr pokoju ilość miejsc
+po zaakceptowaniu zawiera napis dane zostały dodane
+
+
+
+
+
+
+addres /addGuest 
+formularz rejestrujący  gości hotelowych
+imie nazwisko adres email, numer pokoju
+
+po dodaniu gościa ma się wyświetlić strona z aktualnym wykazem wszystkich wolnyc oraz zajętych pokoi
+
+wypisac kto w nich przebywa
+
+nie można przekroczyć pojemności pokoju

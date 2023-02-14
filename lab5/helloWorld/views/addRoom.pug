@@ -1,0 +1,15 @@
+extends base
+block content 
+    div.text-center.d-flex.justify-content-center(style="width:100%")
+        form.d-flex.flex-column.justify-content-center(method="POST" action="/addRoom" style="width:fit-content")
+            #error 
+                if error 
+                    p.text-danger #{errorMsg}
+            if submitSuccess
+                p.text-success Room was successfuly added
+            else
+                label(for="roomNumber") Room number 
+                input.mb-3(type="number" name="roomNumber" id="roomNumber")
+                label(for="roomNumber") Capacity
+                input.mb-3(type="number" name="capacity" id="capacity")
+                button.m-1.btn.btn-dark(type="submit") Add room
