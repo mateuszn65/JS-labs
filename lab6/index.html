@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function downloadRemote() {
+        const remote = document.querySelector("#remote");
+        const area = document.querySelector("#area").value;
+        const location = document.querySelector("#location").value;
+        if (area.length == 0 || location.length == 0){
+          remote.textContent = "both fields required"
+          return
+        }
+        remote.textContent = "Downloading data";
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if (this.readyState == XMLHttpRequest.DONE) {
+            if (this.status == 200) {
+              if ( this.getResponseHeader("content-type") !== "application/xml") {
+                var received_data = this.responseText; 
+                if (received_data.includes("This website is currently experiencing high load")){
+                  remote.textContent = "The server is overloaded"
+                }else{
+                  remote.textContent = JSON.parse(received_data).datetime;
+                }
+              }
+            } else {
+              var received_data = this.responseText;
+              remote.textContent = JSON.parse(received_data).error;
+            }
+          }
+        };
+        xhr.open(
+          "GET",
+          "http://worldtimeapi.org/api/timezone/" + area + "/" + location,
+          true
+        );
+        xhr.send(null);
+      }
+
+      function downloadLocal() {
+        const local = document.querySelector("#local");
+        local.textContent = "Downloading data"
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if (this.readyState == XMLHttpRequest.DONE) {
+            if (this.status == 200) {
+              if (this.getResponseHeader("content-type") == "application/xml") {
+                var received_data = this.responseXML
+                local.textContent = ""
+                local.appendChild(received_data.documentElement)
+              }
+            } else window.alert('There was a problem with this request.')
+          }
+        };
+        xhr.open(
+          "GET",
+          "http://localhost:8081/",
+          true
+        );
+        xhr.send(null);
+      }
+    </script>
+    <style>
+      span{
+        padding: 0.3em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form action="">
+      <label for="area">area</label>
+      <input type="text" name="area" id="area" />
+      <label for="location">location</label>
+      <input type="text" name="location" id="location" />
+      <input type="button" value="Pobierz" onclick="downloadRemote(); downloadLocal()" />
+    </form>
+    <h1>Remote</h1>
+    <div id="remote">Remote date and time</div>
+    <!-- ***************** -->
+    <h1>Local</h1>
+    <div id="local">Local date and time</div>
+  </body>
+</html>

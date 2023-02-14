@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function ajaxRequest() {
+        let url = "http://localhost:8081/canvas"
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if (this.readyState == XMLHttpRequest.DONE) {
+            if (this.status == 200) {
+              if ( this.getResponseHeader("content-type") == "application/json") {
+                var received_data = JSON.parse(this.responseText);
+                console.log(received_data)
+                draw(received_data)
+              }
+            } else {
+              alert('error')
+            }
+          }
+        };
+        xhr.open(
+          "GET",
+          url,
+          true
+        );
+        xhr.send(null);
+      }
+
+
+      function fetchRequest(url) {
+        fetch(url, { method: "GET", mode: "cors" })
+          .then(function (response) {
+            // if the promise is fulfilled
+            if (!response.ok) throw Error(response.statusText);
+            if (response.headers.get("Content-Type") == "application/xml") {
+              response.text()
+              .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+              .then(data =>{
+                  const list = document.querySelector('#list')
+                  list.textContent = ''
+                  list.appendChild(data.documentElement)
+                  ajaxRequest()
+              })
+            }
+          })
+          .catch(function (error) {
+            window.alert(error);
+          });
+
+      }
+
+
+      function ajaxRequestPost(marka){
+        console.log(marka)
+        let params = {
+           marka : marka
+        }
+        let xhr = new XMLHttpRequest()
+        xhr.onreadystatechange = function () {
+          if (this.readyState == XMLHttpRequest.DONE) {
+            if (this.status == 200) {
+              request()
+            } else {
+              alert('error')
+            }
+          }
+        };
+        xhr.open('POST', "http://localhost:8081/canvas", true);
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+        xhr.send(JSON.stringify(params));
+
+      }
+
+
+
+      function draw(data){
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.font = "20px Arial";
+        data.forEach((element, index) => {
+          ctx.fillStyle = 'lightgray';
+          const rectangle = new Path2D()
+          rectangle.rect(10,10 + index * 40,150,35)
+          ctx.fill(rectangle)
+          ctx.fillStyle = 'black';
+          ctx.fillText(element.marka + " " + element.ilosc, 15, 35 + index * 40);
+          canvas.addEventListener('click', function handler(e){
+            if(ctx.isPointInPath(rectangle, e.offsetX, e.offsetY)){
+              ajaxRequestPost(element.marka)
+              canvas.replaceWith(canvas.cloneNode(true))
+            }
+          })
+        });
+        
+      }
+      
+
+      function request() {
+        let area = document.querySelector("#area").value;
+        let lines = area.replace(/\r\n/g, "\n").split("\n");
+        let marka;
+        let ilosc;
+        let cena;
+        let PESEL;
+        let name;
+
+        let url = "http://localhost:8081/";
+
+        if (lines.length > 0 && lines[0] == "CAR") {
+          if (lines.length > 3 && lines[2].length > 0 && lines[3].length > 0) {
+            marka = lines[1];
+            ilosc = lines[2];
+            cena = lines[3];
+            url += "CAR?marka=" + marka + "&ilosc=" + ilosc + "&cena=" + cena;
+          } else if (lines.length > 1 && lines[1].length > 0) {
+            marka = lines[1];
+            url += "DELETE?marka=" + marka;
+          }
+        } else if (lines.length > 0 && lines[0] == "PERSON") {
+          if (lines.length > 3 && lines[1].length > 0 && lines[2].length > 0 && lines[3].length > 0) {
+            PESEL = lines[1];
+            name = lines[2];
+            marka = lines[3];
+            url += "PERSON?PESEL=" + PESEL + "&name=" + name + "&marka=" + marka;
+          }
+        }
+        console.log(url)
+        fetchRequest(url);
+        
+      }
+      window.onload = () => {
+        let url = "http://localhost:8081/";
+        fetchRequest(url);
+      };
+    </script>
+    <style>
+      div {
+        display: block;
+        padding: 0.3em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form action="">
+      <textarea name="area" id="area" rows="4" cols="30"></textarea>
+      <input type="button" value="Wyślij" onclick="request()" />
+    </form>
+    <h1>Wykaz osób i ich pojazdów</h1>
+    <div id="list"></div>
+    <canvas id="canvas"
+              width="200"
+              height="150"
+              style="border:1px solid #000000;">
+        Wygląda na to, że twoja przeglądarka nie obsługuje elementu "canvas" / It looks like your browser does not support the "canvas" element
+      </canvas>
+  </body>
+</html>
