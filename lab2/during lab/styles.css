@@ -1,0 +1,17 @@
+.container{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+}
+
+.buttons-container{
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+    padding: .5em;
+}
+.output{
+    margin: 1em;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css">
+    
+</head>
+<body>
+    <form class="container" name="myForm" action="">
+        <textarea name="myTextarea" id="myTextarea" cols="30" rows="10"></textarea>
+        <div class="buttons-container">
+            <button type="button" onclick="wykonaj()">wykonaj</button>
+            <button type="button" onclick="wypisz()">wypisz</button>
+        </div>
+        <div>
+            <input type="checkbox" name="" id="storage">
+            <label for="storage">Web storage</label>
+        </div>
+    </form>
+    <div class="output" id="user"></div>
+    <div class="output" id="currency"></div>
+    <div class="output" id="output"></div>
+    <div id="mocha">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/dinero.js@alpha/dist/umd/index.production.js"></script>
+    <script>
+        const { dinero, toFormat, toSnapshot, add} = window.dinero.js;
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@dinero.js/currencies@alpha/dist/umd/index.production.js"></script>
+    <script>
+        const { PLN, USD, EUR, GBP } = window['@dinero.js/currencies'];
+    </script>
+
+    <script src="https://unpkg.com/chai/chai.js"></script>
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
+    <script class="mocha-init">
+      mocha.setup('bdd');
+      mocha.checkLeaks();
+    </script>
+    <script src="script.js"></script>
+
+    <script class="mocha-exec">
+      mocha.run();
+    </script>
+</body>
+</html>

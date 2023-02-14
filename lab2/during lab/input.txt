@@ -1,0 +1,17 @@
++jan kowalski //dodanie nowego użytkownika
++$ jan kowalski // dodanie konta walutowego dla jana kowalskiego
++123$ jan kowalski wpłata na konto walutowe
+-123$ jan kowalski wypłata z konta walutowego 
+
+jan kowalski wypisanie wszystkich kont walutowych wraz z saldami
+
+
++Jan Kowalski
++USD;Jan Kowalski
++PLN;Jan Kowalski
++123;USD;Jan Kowalski
+-23;USD;Jan Kowalski
++50;PLN;Jan Kowalski
+
+co ustalony czas pojawiają się, a następnie znikają obrazki
+czas gry 30s 
